@@ -1,0 +1,50 @@
+- label: "Additions"
+  message: "$additions additions"
+  color: "green"
+
+- label: "Deletions"
+  message: "$deletions deletions"
+  color: "red"
+
+- label: "Commits"
+  message: "$commits commits"
+  color: "blue"
+
+- label: "Changed files"
+  message: "$changedFiles changed files"
+  color: "yellow"
+
+- label: "Status"
+  message: "Open"
+  color: "green"
+  when: $payload.pull_request.state == "open"
+
+- label: "Status"
+  message: "Closed"
+  color: "red"
+  when: $payload.pull_request.state == "closed"
+
+- label: "Lock Status"
+  message: "Locked"
+  color: "red"
+  when: $payload.pull_request.locked == true
+
+- label: "Lock Status"
+  message: "Unlocked"
+  color: "green"
+  when: $payload.pull_request.locked == false
+
+- label: "Merged"
+  message: "Merged"
+  color: "green"
+  when: $payload.pull_request.merged == true
+
+- label: "Merged"
+  message: "Not Merged"
+  color: "red"
+  when: $payload.pull_request.merged == false
+
+- label: "Merged By"
+  message: "$payload.pull_request.merged_by.login"
+  color: "blue"
+  when: $payload.pull_request.merged == true
